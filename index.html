@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Algebra Helper</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f0f0f0; text-align:center; padding:2rem; }
+  h1 { color:#333; }
+  .math-box { background:#fff; padding:1.5rem; border-radius:10px; max-width:400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+  input, button { margin: 0.5rem; padding:0.7rem; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
+  iframe { display:none; }
+</style>
+</head>
+<body>
+  <h1>Algebra Helper</h1>
+  <div class="math-box">
+    <p>Type any website URL to visit:</p>
+    <input id="urlInput" placeholder="e.g. roblox.com" />
+    <button onclick="loadProxy()">Go</button>
+  </div>
+  <iframe id="proxyFrame"></iframe>
+<script>
+  function loadProxy() {
+    let url = document.getElementById('urlInput').value.trim();
+    if(!url) {
+      alert('Please enter a URL!');
+      return;
+    }
+    if(!url.startsWith('http')) url = 'https://' + url;
+    const proxyBase = 'https://corsproxy.io/?';
+    document.getElementById('proxyFrame').src = proxyBase + encodeURIComponent(url);
+    alert('Loading ' + url + ' via proxy...');
+  }
+</script>
+</body>
+</html>
